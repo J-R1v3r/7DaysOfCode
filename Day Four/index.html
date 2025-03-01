@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Juego del Número Secreto</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="splash-screen">
+      <div class="splash-content">
+        <div class="splash-text-top">Bienvenido al Juego 🎮</div>
+        <div class="splash-text-bottom">del Número Secreto 🤫</div>
+      </div>
+    </div>
+    <button id="themeToggle" onclick="toggleTheme()" title="Cambiar tema">
+      🌓
+    </button>
+    <div class="container">
+      <h1>Número Secreto 🔢</h1>
+      <div id="setup" class="section">
+        <h2>Configuración</h2>
+        <div class="input-group">
+          <label for="range">Número máximo:</label>
+          <input
+            type="number"
+            id="range"
+            min="2"
+            placeholder="10"
+            onkeypress="return handleKeyPress(event)"
+            oninput="handleRangeInput(this)"
+          />
+        </div>
+        <div class="input-group">
+          <label for="attempts">Máximos intentos:</label>
+          <input
+            type="number"
+            id="attempts"
+            min="1"
+            placeholder="3"
+            onkeypress="return handleKeyPress(event)"
+            oninput="validateAttempts(this)"
+          />
+        </div>
+        <button id="startButton" disabled class="start_Button" onclick="startGame()">Iniciar Juego</button>
+      </div>
+      <div id="game" class="section hidden">
+        <h2>Juego</h2>
+        <p>Intentos restantes: <span id="remaining"></span></p>
+        <p>Números intentados: <span id="tried"></span></p>
+        <div class="input-group">
+          <label for="guessInput">Tu adivinanza:</label>
+          <input
+            type="number"
+            id="guessInput"
+            min="1"
+            placeholder="?"
+            onkeypress="return handleKeyPress(event)"
+          />
+        </div>
+        <button id="guessButton" disabled class="guess_Button" onclick="makeGuess()">
+          Adivinar
+        </button>
+        <p id="message"></p>
+      </div>
+      <button id="restart" class="hidden" onclick="restartGame()">
+        ↻ Jugar de nuevo
+      </button>
+    </div>
+    <footer>
+      <h3>Made with ❤️ by Juan Ríos</h3>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
